@@ -1,15 +1,31 @@
 import { useState } from 'react';
-import { Phone, MapPin, Send, CheckCircle, MessageCircle } from 'lucide-react';
+import { Phone, MapPin, Send, CheckCircle, MessageCircle, AlertCircle } from 'lucide-react';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', phone: '', course: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setForm({ name: '', phone: '', course: '', message: '' });
+    setStatus('loading');
+
+    try {
+      const response = await fetch('https://formspree.io/f/mrewybgp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setForm({ name: '', phone: '', course: '', message: '' });
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -75,13 +91,27 @@ export default function Contact() {
           </div>
 
           <div className="bg-gray-50 rounded-3xl p-6 sm:p-8 lg:p-10">
-            {submitted ? (
+            {status === 'success' ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-green-100 flex items-center justify-center mb-4">
                   <CheckCircle className="w-7 h-7 sm:w-8 sm:h-8 text-green-600" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Thank You!</h3>
-                <p className="text-gray-600 text-sm sm:text-base">We have received your request and will contact you shortly.</p>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Thank you!</h3>
+                <p className="text-gray-600 text-sm sm:text-base">We'll contact you shortly.</p>
+              </div>
+            ) : status === 'error' ? (
+              <div className="h-full flex flex-col items-center justify-center text-center py-12">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-red-100 flex items-center justify-center mb-4">
+                  <AlertCircle className="w-7 h-7 sm:w-8 sm:h-8 text-red-600" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Something went wrong.</h3>
+                <p className="text-gray-600 text-sm sm:text-base">Please try again.</p>
+                <button
+                  onClick={() => setStatus('idle')}
+                  className="mt-4 px-6 py-2 rounded-lg bg-primary-800 text-white font-medium hover:bg-primary-900 transition-colors"
+                >
+                  Try Again
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
@@ -140,10 +170,23 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-4 rounded-xl bg-primary-800 text-white font-semibold hover:bg-primary-900 transition-all shadow-lg shadow-primary-900/20 hover:shadow-xl hover:-translate-y-0.5 min-h-[52px]"
+                  disabled={status === 'loading'}
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-4 rounded-xl bg-primary-800 text-white font-semibold hover:bg-primary-900 transition-all shadow-lg shadow-primary-900/20 hover:shadow-xl hover:-translate-y-0.5 min-h-[52px] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                 >
-                  <Send className="w-4 h-4" />
-                  Book Free Demo
+                  {status === 'loading' ? (
+                    <>
+                      <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      Book Free Demo
+                    </>
+                  )}
                 </button>
               </form>
             )}
