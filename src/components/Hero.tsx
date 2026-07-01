@@ -1,4 +1,4 @@
-import { ArrowRight, Star, Phone, MapPin } from 'lucide-react';
+import { ArrowRight, Star, Phone, MapPin, MessageSquare } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -20,7 +20,7 @@ export default function Hero() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-400/15 border border-gold-400/30 mb-6">
               <Star className="w-4 h-4 text-gold-400 fill-gold-400" />
               <span className="text-sm font-semibold text-gold-400">4.9 Google Rating</span>
-              <span className="text-sm text-gold-400/80">· 1000+ Students</span>
+              <span className="text-sm text-gold-400/80">· 179+ Google Reviews</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-6">
@@ -67,20 +67,23 @@ export default function Hero() {
               <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8">
                 <div className="grid grid-cols-2 gap-4 sm:gap-6">
                   <div className="bg-white/10 rounded-2xl p-5 sm:p-6 text-center animate-float">
+                    <Star className="w-6 h-6 text-gold-400 fill-gold-400 mx-auto mb-2" />
                     <div className="text-2xl sm:text-3xl font-extrabold text-gold-400 mb-1">4.9</div>
                     <div className="text-sm text-white/70">Google Rating</div>
                   </div>
                   <div className="bg-white/10 rounded-2xl p-5 sm:p-6 text-center animate-float" style={{ animationDelay: '0.5s' }}>
-                    <div className="text-2xl sm:text-3xl font-extrabold text-gold-400 mb-1">1000+</div>
-                    <div className="text-sm text-white/70">Students Trained</div>
+                    <MessageSquare className="w-6 h-6 text-gold-400 mx-auto mb-2" />
+                    <div className="text-2xl sm:text-3xl font-extrabold text-gold-400 mb-1">179+</div>
+                    <div className="text-sm text-white/70">Google Reviews</div>
                   </div>
                   <div className="bg-white/10 rounded-2xl p-5 sm:p-6 text-center animate-float" style={{ animationDelay: '1s' }}>
                     <div className="text-2xl sm:text-3xl font-extrabold text-gold-400 mb-1">5</div>
                     <div className="text-sm text-white/70">International Exam Programs</div>
                   </div>
                   <div className="bg-white/10 rounded-2xl p-5 sm:p-6 text-center animate-float" style={{ animationDelay: '1.5s' }}>
+                    <MapPin className="w-6 h-6 text-gold-400 mx-auto mb-2" />
                     <div className="text-2xl sm:text-3xl font-extrabold text-gold-400 mb-1">Kukatpally</div>
-                    <div className="text-sm text-white/70">Hyderabad, India</div>
+                    <div className="text-sm text-white/70">Hyderabad</div>
                   </div>
                 </div>
               </div>
