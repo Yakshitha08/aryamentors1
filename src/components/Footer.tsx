@@ -1,4 +1,4 @@
-import { GraduationCap, Phone, MapPin, Clock, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import { GraduationCap, Phone, MapPin, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -92,13 +92,6 @@ export default function Footer() {
                 <a href="tel:+919177754534" className="text-white/60 text-sm hover:text-gold-400 transition-colors">
                   +91 91777 54534
                 </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Clock className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
-                <span className="text-white/60 text-sm leading-relaxed">
-                  Mon - Sat: 10:00 AM - 8:00 PM<br />
-                  Sunday: Closed
-                </span>
               </li>
             </ul>
           </div>
