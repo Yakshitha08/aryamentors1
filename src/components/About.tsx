@@ -2,9 +2,9 @@ import { Target, Users, Award, BookOpen } from 'lucide-react';
 
 const stats = [
   { icon: Award, value: '4.9', label: 'Google Rating' },
-  { icon: Users, value: '1000+', label: 'Students Trained' },
+  { icon: Users, value: '179+', label: 'Google Reviews' },
   { icon: BookOpen, value: '5', label: 'International Exam Programs' },
-  { icon: Target, value: 'Kukatpally', label: 'Hyderabad, India' },
+  { icon: Target, value: 'Kukatpally', label: 'Hyderabad' },
 ];
 
 export default function About() {
@@ -18,23 +18,23 @@ export default function About() {
               About Us
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-5 sm:mb-6 leading-tight">
-              Focused Coaching for Students Who Want to{' '}
-              <span className="text-primary-700">Study Abroad</span>
+              Coaching That Adapts to{' '}
+              <span className="text-primary-700">How You Learn</span>
             </h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              Arya Mentors is a coaching center in Kukatpally, Hyderabad, dedicated to helping students 
-              crack IELTS, GRE, SAT, TOEFL, and PTE. We do not believe in a one-size-fits-all approach. 
-              Every student gets personalized attention, and our trainers work closely with each one to 
-              identify their weaknesses and improve them.
+              Arya Mentors was founded with a simple idea: exam prep works best when it is personal.
+              Our trainers have years of experience teaching IELTS, GRE, SAT, TOEFL, and PTE, and they
+              understand that no two students start from the same place.
             </p>
             <p className="text-gray-600 leading-relaxed mb-6 sm:mb-8">
-              Our classes are kept deliberately small so that every student receives individual feedback. 
-              We conduct daily mock tests, provide detailed writing and speaking reviews, and help students 
-              build the confidence they need to walk into the exam hall and perform their best.
+              We keep our batch sizes small on purpose. This gives trainers the time to understand where
+              each student struggles, offer targeted feedback, and track progress session by session.
+              Regular mock tests simulate real exam conditions, so students know exactly what to expect
+              and can walk in on test day with confidence.
             </p>
             <p className="text-gray-600 leading-relaxed mb-6 sm:mb-8">
-              Many of our students have gone on to study in universities across the US, UK, Canada, and Australia. 
-              We are proud to be part of that journey.
+              Over the years, our students have secured admissions to universities in the US, UK, Canada,
+              Australia, and Europe. Their results are a testament to what focused mentoring can achieve.
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
